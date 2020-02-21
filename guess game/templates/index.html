@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+</head>
+<body>
+    <header class="frame">
+        <div class="cen" align="middle">
+        <form action="/game" method="POST" id="main">
+            {% if start %}
+            {% if con==0 %}
+            <h2>Generate Number</h2>
+         <input type="number" name="start" id="start" placeholder="enter starting number" required>
+         <input type="number" name="end" id="end" placeholder="enter ending number" required>
+         <br>
+         {% endif %}
+         {% if con==1 %}
+            <h2>Generate Number</h2>
+          <h3>{{val1}} between {{val2}}</h3>
+         {% endif %}
+         <h3>Guess number</h3>
+         {% if val==1%}
+         <h3 style="color:green;">your guess number is correct</h3>
+         {% elif val==2%}
+         <h3  style="color:red;">your guess number is greater than</h3>
+         {% elif val==3%}
+         <h3 style="color:red;">your guess number is less than</h3>
+         {% endif %}
+         <input type="number" name="guess" id="guess" placeholder="enter guessed number">
+         <br>
+         <input class="btn-success" type="submit" value="Play guess" name="Play guess" id="bt_ch">
+         <input class="btn-success" type="submit" value="Play again" name="Play again" id="again">
+        {% endif %}
+        {% if not start %}
+            <h2>Guess Number Game</h2>
+           <button class="bt"><a  href="/game" value="Play">Play</a></button>
+        {% endif %}
+    </form>
+      </div>
+    </header>
+    <script src="{{url_for('static',filename='script.js')}}"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
